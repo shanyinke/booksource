@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
                         String author = cursor.getString(cursor.getColumnIndex("author"));
                         int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                         double price = cursor.getDouble(cursor.getColumnIndex("price"));
+                        Toast.makeText(MainActivity.this,"book name is " + name+
+                                "book author is " + author
+                                +"book pages is " + pages+
+                                "book price is " + price,Toast.LENGTH_SHORT).show();
+
                         Log.d("MainActivity", "book name is " + name);
                         Log.d("MainActivity", "book author is " + author);
                         Log.d("MainActivity", "book pages is " + pages);

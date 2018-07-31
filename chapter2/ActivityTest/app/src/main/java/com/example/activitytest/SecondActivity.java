@@ -37,6 +37,7 @@ public class SecondActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("SecondActivity", "onDestroy");
+        Toast.makeText(this, "SecondActivity onDestroy", Toast.LENGTH_SHORT).show();
     }
 
     @Override

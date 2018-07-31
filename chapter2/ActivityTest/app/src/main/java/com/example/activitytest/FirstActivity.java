@@ -33,6 +33,7 @@ public class FirstActivity extends BaseActivity {
     protected void onRestart() {
         super.onRestart();
         Log.d("FirstActivity", "onRestart");
+        Toast.makeText(this, "FirstActivity onRestart", Toast.LENGTH_SHORT).show();
     }
 
     @Override
