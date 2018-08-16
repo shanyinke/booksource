@@ -8,15 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private MyDatabaseHelper dbHelper;
-
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = (TextView) findViewById(R.id.textView) ;
         dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 2);
         Button createDatabase = (Button) findViewById(R.id.create_database);
         createDatabase.setOnClickListener(new View.OnClickListener() {
@@ -38,12 +40,14 @@ public class MainActivity extends AppCompatActivity {
                 values.put("price", 16.96);
                 db.insert("Book", null, values); // 插入第一条数据
                 values.clear();
+                textView.setText("插入第一行数字");
                 // 开始组装第二条数据
                 values.put("name", "The Lost Symbol");
                 values.put("author", "Dan Brown");
                 values.put("pages", 510);
                 values.put("price", 19.95);
                 db.insert("Book", null, values); // 插入第二条数据
+                textView.setText(textView.getText().toString()+"插入第二行数字");
             }
         });
         Button updateData = (Button) findViewById(R.id.update_data);
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("MainActivity", "book author is " + author);
                         Log.d("MainActivity", "book pages is " + pages);
                         Log.d("MainActivity", "book price is " + price);
+                        textView.setText(textView.getText().toString()+"\nbook name is " + name);
                     } while (cursor.moveToNext());
                 }
                 cursor.close();

@@ -1,8 +1,8 @@
 package com.example.litepaltest;
 
-import org.litepal.crud.DataSupport;
+import org.litepal.crud.LitePalSupport;
 
-public class Book extends DataSupport {
+public class Book extends LitePalSupport {
 
     private int id;
 

@@ -39,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("com.example.broadcasttest.LOCAL_BROADCAST");
-                localBroadcastManager.sendBroadcast(intent); // 发送本地广播
+                Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");
+                sendBroadcast(intent);
+                //localBroadcastManager.sendBroadcast(intent); // 发送本地广播
             }
         });
         intentFilter = new IntentFilter();

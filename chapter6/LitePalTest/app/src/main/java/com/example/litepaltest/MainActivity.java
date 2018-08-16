@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
                 Connector.getDatabase();
             }
         });
+        final TextView textView = (TextView) findViewById(R.id.textView);
+
         Button addData = (Button) findViewById(R.id.add_data);
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("MainActivity", "book pages is " + book.getPages());
                     Log.d("MainActivity", "book price is " + book.getPrice());
                     Log.d("MainActivity", "book press is " + book.getPress());
+                    textView.setText("book name is " + book.getName()+"\nbook author is " + book.getAuthor()
+                    +"\nbook pages is " + book.getPages());
                 }
             }
         });

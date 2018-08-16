@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class RightFragment extends Fragment {
 
@@ -22,6 +23,8 @@ public class RightFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
+
+        Toast.makeText(getContext(),"onCreate",Toast.LENGTH_SHORT).show();
     }
 
     @Override

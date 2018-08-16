@@ -8,15 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private String newId;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = (TextView) findViewById(R.id.textView);
         Button addData = (Button) findViewById(R.id.add_data);
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 values.put("price", 55.55);
                 Uri newUri = getContentResolver().insert(uri, values);
                 newId = newUri.getPathSegments().get(1);
+                textView.setText(textView.getText()+"\n添加数据成功");
             }
         });
         Button queryData = (Button) findViewById(R.id.query_data);
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 // 查询数据
                 Uri uri = Uri.parse("content://com.example.databasetest.provider/book");
                 Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+                textView.setText("");
                 if (cursor != null) {
                     while (cursor.moveToNext()) {
                         String name = cursor.getString(cursor. getColumnIndex("name"));
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("MainActivity", "book author is " + author);
                         Log.d("MainActivity", "book pages is " + pages);
                         Log.d("MainActivity", "book price is " + price);
+                        textView.setText(textView.getText()+"\nbook name is " + name);
                     }
                     cursor.close();
                 }
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 values.put("pages", 1216);
                 values.put("price", 24.05);
                 getContentResolver().update(uri, values, null, null);
+
             }
         });
         Button deleteData = (Button) findViewById(R.id.delete_data);
@@ -74,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 // 删除数据
                 Uri uri = Uri.parse("content://com.example.databasetest.provider/book/" + newId);
                 getContentResolver().delete(uri, null, null);
+                textView.setText(textView.getText()+"\n删除数据" );
             }
         });
     }
