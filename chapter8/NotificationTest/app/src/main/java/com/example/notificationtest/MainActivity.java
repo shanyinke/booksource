@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 //        .setLights(Color.GREEN, 1000, 1000)
                         .setDefaults(NotificationCompat.DEFAULT_ALL)
                 //        .setStyle(new NotificationCompat.BigTextStyle().bigText("Learn how to build notifications, send and sync data, and use voice actions. Get the official Android IDE and developer tools to build apps for Android."))
-                        .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.big_image)))
-                        .setPriority(NotificationCompat.PRIORITY_MAX)
+                    //    .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.big_image)))
+                      //  .setPriority(NotificationCompat.PRIORITY_MAX)
                         .build();
                 manager.notify(1, notification);
                 break;

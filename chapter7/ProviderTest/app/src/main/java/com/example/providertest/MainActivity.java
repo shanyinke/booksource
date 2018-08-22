@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button addData = (Button) findViewById(R.id.add_data);
         addData.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View View) {
                 // 添加数据
                 Uri uri = Uri.parse("content://com.example.databasetest.provider/book");
                 ContentValues values = new ContentValues();
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Button queryData = (Button) findViewById(R.id.query_data);
         queryData.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View View) {
                 // 查询数据
                 Uri uri = Uri.parse("content://com.example.databasetest.provider/book");
                 Cursor cursor = getContentResolver().query(uri, null, null, null, null);
