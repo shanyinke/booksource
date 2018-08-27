@@ -13,7 +13,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.ResponseCache;
 import java.net.URL;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView responseText;
@@ -22,8 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button sendRequest = (Button) findViewById(R.id.send_request);
+        Button sendRequestok = (Button) findViewById(R.id.send_request_okHttp) ;
         responseText = (TextView) findViewById(R.id.response_test);
         sendRequest.setOnClickListener(this);
+        sendRequestok.setOnClickListener(this);
     }
     @Override
     public void onClick(View view){
@@ -31,7 +38,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             sendRequestWithHttpURLConnection();
 
+        }else if (view.getId() == R.id.send_request_okHttp){
+            sendRequestWithokHttp();
         }
+    }
+    private void  sendRequestWithokHttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client = new OkHttpClient();
+                    Request request= new Request.Builder()
+                            .url("http://www.paojiang.cn")
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseDatda=  response.body().string();
+                    showResponse(responseDatda);
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
     private void  sendRequestWithHttpURLConnection(){
         //开启线程来发起网络请求
