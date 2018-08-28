@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
@@ -60,18 +62,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     OkHttpClient client = new OkHttpClient();
                     Request request= new Request.Builder()
                             //指定访问的服务器地址
-                            .url("http://www.paojiang.cn/get_data.xml")
+                            .url("http://www.paojiang.cn/get_data.json")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseDatda=  response.body().string();
                    // showResponse(responseDatda);
                     //parseXMLWithPull(responseDatda);
-                    parseXMlWithSAX(responseDatda);
+                   // parseXMlWithSAX(responseDatda);
+                    parseJSONwithJSONObject(responseDatda);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+    private void parseJSONwithJSONObject(String jsonData){
+        try {
+            JSONArray jsonArray = new JSONArray(jsonData);
+            for (int i=0;i<jsonArray.length();i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String id = jsonObject.getString("id");
+                String name = jsonObject.getString("name");
+                String version = jsonObject.getString("version");
+                Log.d("MainActivity","id is "+ id);
+                Log.d("MainActivity","version is "+ version);
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     private void parseXMlWithSAX(String xmlData){
         try {
