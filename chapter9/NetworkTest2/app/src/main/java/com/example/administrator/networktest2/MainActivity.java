@@ -32,6 +32,7 @@ import java.util.List;
 
 import javax.xml.parsers.SAXParserFactory;
 
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -44,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button sendRequest = (Button) findViewById(R.id.send_request);
         Button sendRequestok = (Button) findViewById(R.id.send_request_okHttp) ;
+        Button sendRequestHttpUtil =(Button) findViewById(R.id.send_request_httpUtil) ;
         responseText = (TextView) findViewById(R.id.response_test);
         sendRequest.setOnClickListener(this);
         sendRequestok.setOnClickListener(this);
+        sendRequestHttpUtil.setOnClickListener(this);
     }
     @Override
     public void onClick(View view){
@@ -56,6 +59,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }else if (view.getId() == R.id.send_request_okHttp){
             sendRequestWithokHttp();
+        }else if (view.getId() == R.id.send_request_httpUtil){
+
+            HttpUtil.sendOKHttpRequest("http://www.paojiang.cn/",new okhttp3.Callback(){
+                @Override
+                public void onResponse(Call call, Response response) throws  IOException{
+                    String responseData = response.body().string();
+                    showResponse(responseData);
+                }
+                @Override
+                public void onFailure(Call call,IOException e){
+                    e.printStackTrace();
+                }
+            });
         }
     }
     private void  sendRequestWithokHttp(){
@@ -69,12 +85,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             .url("http://www.paojiang.cn/get_data.json")
                             .build();
                     Response response = client.newCall(request).execute();
-                    String responseDatda=  response.body().string();
-                   // showResponse(responseDatda);
-                    //parseXMLWithPull(responseDatda);
+                    String responseDada=  response.body().string();
+                   // showResponse(responseDada);
+                    //parseXMLWithPull(responseDada);
                    // parseXMlWithSAX(responseDatda);
-                    parseJSONwithJSONObject(responseDatda);
-                    parseJSONwithGSON(responseDatda);
+                    //parseJSONwithJSONObject(responseDada);
+                    parseJSONwithGSON(responseDada);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
