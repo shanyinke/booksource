@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pauseDownload.setOnClickListener(this);
         cancelDownload.setOnClickListener(this);
         textView = (TextView) findViewById(R.id.text_view);
-        Intent intent = new Intent(this,DownloadService2.class);
+        Intent intent = new Intent(this,DownloadService.class);
         startService(intent);//启动服务
         bindService(intent,connection,BIND_AUTO_CREATE);
         if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest
