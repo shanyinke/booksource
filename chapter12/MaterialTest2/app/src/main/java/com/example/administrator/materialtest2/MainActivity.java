@@ -1,6 +1,8 @@
 package com.example.administrator.materialtest2;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
@@ -37,6 +40,32 @@ public class MainActivity extends AppCompatActivity {
     private FruitAdapter adapter;
 
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    //finish();
+                    //mTextMessage.setText(R.string.title_home);oo
+                    return true;
+                case R.id.navigation_dashboard:
+                    //mTextMessage.setText(R.string.title_dashboard);
+                    return true;
+                case R.id.navigation_notifications:
+                   // mTextMessage.setText(R.string.title_notifications);
+                    return true;
+                case R.id.navigation_task:
+                   // mTextMessage.setText(R.string.title_tasks);
+                    return true;
+                case R.id.navigation_personal:
+                    return true;
+            }
+            return false;
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_view);
+        navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+
+
+
         ActionBar actionBar = getSupportActionBar();
         if(actionBar!=null){
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -138,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.setting:
                 Toast.makeText(this,"You clicked setting",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,ButtomNavigationActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

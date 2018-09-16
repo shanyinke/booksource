@@ -18,9 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FruitActivity"
-            android:theme="@style/FruitActivityTheme" ></activity>
-
+        <activity
+            android:name=".FruitActivity"
+            android:theme="@style/FruitActivityTheme" />
+        <activity
+            android:name=".ButtomNavigationActivity"
+            android:label="@string/title_activity_buttom_navigation"></activity>
     </application>
 
 </manifest>
