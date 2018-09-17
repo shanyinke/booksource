@@ -37,7 +37,7 @@ public class FruitActivity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     // mTextMessage.setText(R.string.title_notifications);
                     return true;
-                case R.id.navigation_task:
+                case R.id.shopping_cart:
                     // mTextMessage.setText(R.string.title_tasks);
                     return true;
                 case R.id.navigation_personal:

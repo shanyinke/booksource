@@ -2,8 +2,9 @@
     <string name="app_name">MaterialTest2</string>
     <string name="title_activity_buttom_navigation">ButtomNavigationActivity</string>
     <string name="title_home">首页</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_tasks">Tasks</string>
+    <string name="title_dashboard">仪表板</string>
+    <string name="title_notifications">注意</string>
+    <string name="title_tasks">任务</string>
+    <string name="title_shoping_cart">购物车</string>
     <string name="title_personal">我的</string>
 </resources>

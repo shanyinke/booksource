@@ -80,6 +80,9 @@
 
         android:background="?android:attr/windowBackground"
         android:layout_gravity="bottom"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemBackground="@null"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/navigation" />
 
 </android.support.design.widget.CoordinatorLayout>
