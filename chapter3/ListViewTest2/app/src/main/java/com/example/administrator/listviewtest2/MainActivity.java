@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Fruit> fruitList = new ArrayList<>();
+    private List<Fruit> fruitList = new ArrayList<Fruit>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
     private void initFruits() {
-        for (int i = 0; i <4; i++) {
+        for (int i = 0; i <2; i++) {
             Fruit apple =new Fruit("Apple",R.drawable.apple_pic,"hahaha ");
             fruitList.add(apple);
             Fruit banana = new Fruit("Banana", R.drawable.banana_pic,"hahaha ");

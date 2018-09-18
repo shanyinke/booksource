@@ -20,8 +20,11 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         super(context,textViewResourceId,objects);
         resourceId=textViewResourceId;
     }
+
+
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         Fruit fruit =getItem(position);
         View view;
         ViewHolder viewHolder;
@@ -30,8 +33,8 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
             viewHolder =new ViewHolder();
             viewHolder.fruitImage=(ImageView) view.findViewById(R.id.fruit_image);
             viewHolder.fruitName= (TextView) view.findViewById(R.id.fruit_name);
-            viewHolder.fruitName1= (TextView) view.findViewById(R.id.fruit_name1);
-
+           viewHolder.fruitName1= (TextView) view.findViewById(R.id.fruit_name1);
+            view.setTag(viewHolder); // 将ViewHolder存储在View中  上次忘记到此下滑时错误
         }else{
 
             view =convertView;
@@ -40,14 +43,14 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
 
         viewHolder.fruitImage.setImageResource(fruit.getImageId());
         viewHolder.fruitName.setText(fruit.getName());
-        viewHolder.fruitName1.setText(fruit.getName1());
+    viewHolder.fruitName1.setText(fruit.getName1());
         return view;
 
     }
     class ViewHolder {
         ImageView fruitImage;
         TextView fruitName;
-        TextView fruitName1;
+    TextView fruitName1;
 
     }
 }

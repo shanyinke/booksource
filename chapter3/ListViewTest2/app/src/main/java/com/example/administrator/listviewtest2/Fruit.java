@@ -17,7 +17,8 @@ public class Fruit {
     public String getName() {
         return name;
     }
-    public String getName1(){return  name1;}
+    public String getName1(){
+        return  name1;}
 
     public int getImageId() {
         return imageId;
