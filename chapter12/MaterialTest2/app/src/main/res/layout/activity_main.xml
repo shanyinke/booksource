@@ -49,7 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="?android:attr/windowBackground"
-
+            app:itemHorizontalTranslationEnabled="false"
+            app:itemBackground="@null"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/navigation" />
     </android.support.design.widget.CoordinatorLayout>
 
