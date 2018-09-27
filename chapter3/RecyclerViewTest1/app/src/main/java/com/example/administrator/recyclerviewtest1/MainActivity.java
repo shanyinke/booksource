@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initFruits();//初始化水果数据
         RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
-//        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+       LinearLayoutManager layoutManager=new LinearLayoutManager(this);
 //        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+      //StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         FruitAdapter adapter= new FruitAdapter(fruitList);
         recyclerView.setAdapter(adapter);
