@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     OkHttpClient client = new OkHttpClient();
                     Request request= new Request.Builder()
                             //指定访问的服务器地址
-                            .url("http://www.paojiang.cn/get_data.json")
+                            .url("http://www.2605h.cn/usercenter/cp_data1.php")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseDada=  response.body().string();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //parseXMLWithPull(responseDada);
                    // parseXMlWithSAX(responseDatda);
                     //parseJSONwithJSONObject(responseDada);
-                    parseJSONwithGSON(responseDada);
+                    parseJSONwithGSON2(responseDada);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -103,7 +103,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for(App app:appList){
             Log.d("MainActivity","id is "+ app.getId());
             Log.d("MainActivity","name is "+ app.getName());
-            Log.d("MainActivity","version is "+ app.getVersion());
+            Log.d("MainActivity","getVersion is "+ app.getVersion());
+        }
+    }
+
+    private void parseJSONwithGSON2(String jsonData){
+        Gson gson = new Gson();
+        List<Cpdata> appList = gson.fromJson(jsonData,new TypeToken<List<Cpdata>>(){}.getType());
+        for(Cpdata cpdata:appList){
+            Log.d("MainActivity","cpid is "+ cpdata.getCpid());
+            Log.d("MainActivity","name is "+ cpdata.getName());
+            Log.d("MainActivity","birthday is "+ cpdata.getBirthday());
+            Log.d("MainActivity","creditrating is "+cpdata.getCreditrating());
         }
     }
     private void parseJSONwithJSONObject(String jsonData){
