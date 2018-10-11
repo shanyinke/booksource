@@ -4,7 +4,7 @@ public class Cpdata {
     private String cpid;
     private String name;
     private String birthday;
-    private String creditrating;
+    public String creditrating;
     public void setId(String id){
         this.cpid =id;
     }

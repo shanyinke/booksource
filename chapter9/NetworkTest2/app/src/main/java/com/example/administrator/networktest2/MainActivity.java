@@ -115,7 +115,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d("MainActivity","name is "+ cpdata.getName());
             Log.d("MainActivity","birthday is "+ cpdata.getBirthday());
             Log.d("MainActivity","creditrating is "+cpdata.getCreditrating());
+            Log.d("MainActivity","creditrating is "+cpdata.creditrating);
         }
+
+
     }
     private void parseJSONwithJSONObject(String jsonData){
         try {

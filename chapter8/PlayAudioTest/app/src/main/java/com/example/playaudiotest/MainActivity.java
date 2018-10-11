@@ -3,6 +3,7 @@ package com.example.playaudiotest;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -37,9 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initMediaPlayer() {
         try {
-            File file = new File(Environment.getExternalStorageDirectory(), "music.mp3");
-            mediaPlayer.setDataSource(file.getPath()); // 指定音频文件的路径
-            mediaPlayer.prepare(); // 让MediaPlayer进入到准备状态
+//            File file = new File(Environment.getExternalStorageDirectory(), "music.mp3");
+//            mediaPlayer.setDataSource(file.getPath()); // 指定音频文件的路径
+//            mediaPlayer.prepare(); // 让MediaPlayer进入到准备状态
+//            Uri uri = Uri.parse("http://music.aksky.com/media/1.mp3");
+//            //MediaPlayer mediaPlayer = new MediaPlayer();
+//            mediaPlayer.setDataSource(MainActivity.this, uri);
+//            mediaPlayer.prepare();
+
+            Uri uri = Uri.parse("http://music.aksky.com/media/1.mp3");
+
+            mediaPlayer.setDataSource(this, uri);
+
+
+
+            mediaPlayer.prepare();
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
