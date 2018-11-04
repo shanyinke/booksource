@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private String newId;
     TextView textView;
+    Date dt;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 values.put("price", 55.55);
                 Uri newUri = getContentResolver().insert(uri, values);
                 newId = newUri.getPathSegments().get(1);
-                textView.setText(textView.getText()+"\n添加数据成功");
+                 dt = new Date();
+
+                textView.setText(textView.getText()+"\n添加数据成功"+dt.toString());
             }
         });
         Button queryData = (Button) findViewById(R.id.query_data);
@@ -47,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
                         String author = cursor.getString(cursor.getColumnIndex("author"));
                         int pages = cursor.getInt(cursor.getColumnIndex("pages"));
                         double price = cursor.getDouble(cursor.getColumnIndex("price"));
+                        dt = new Date();
                         textView.setText("book name  is "+name +
                         "\n book author is "+author
                         +"\n book pages is "+pages+
-                        "\n book price  is "+price+"\n"+textView.getText());
+                        "\n book price  is "+price+"\n"+dt.toString()+textView.getText());
 
                     }
                     cursor.close();
