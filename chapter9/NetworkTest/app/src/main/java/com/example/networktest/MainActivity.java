@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                    parseJSONWithJSONObject(responseData);
 //                    parseXMLWithSAX(responseData);
 //                    parseXMLWithPull(responseData);
-//                    showResponse(responseData);
+                  showResponse(responseData);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
