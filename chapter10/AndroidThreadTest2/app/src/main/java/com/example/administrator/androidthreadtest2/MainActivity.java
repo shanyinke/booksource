@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void handleMessage(Message message){
             switch (message.what){
                 case UPDATE_TEXT:
-                    text.setText("Nice to meet you!");
+                    text.setText(text.getText()+"Nice to meet you!");
                     break;
                 default:
                     break;
